@@ -6,13 +6,13 @@ require 'coveralls'
 Coveralls.wear!
 
 Unsplash.configure do |config|
-  config.application_id = "baaa6a1214d50b3586bec6e06157aab859bd4d86dc0b755360f103f38974edc3"
+  config.application_access_key = "baaa6a1214d50b3586bec6e06157aab859bd4d86dc0b755360f103f38974edc3"
   config.application_secret = "bb834160d12304045c55d0c0ec2eb0fe62a5fe249bc1a392386120d55eb2793a"
   config.utm_source = "unsplash_rb_specs"
 end
 
 VCR.configure do |config|
-  config.default_cassette_options = { match_requests_on: [:method, :path, :query] }
+  config.default_cassette_options = { match_requests_on: [:method, :path, :query], record: :new_episodes }
   config.cassette_library_dir = "spec/cassettes"
   config.hook_into :webmock
   config.register_request_matcher :auth_header do |request_1, request_2|
@@ -23,9 +23,7 @@ VCR.configure do |config|
   end
 end
 
-
 RSpec.configure do |config|
-
   config.order = "random"
 
   config.before :each do |example|
@@ -38,7 +36,6 @@ RSpec.configure do |config|
     end
   end
 end
-
 
 def stub_oauth_authorization
   token = "69cca388c56e64fc2ee1c9f7cfb0dcec1bf1b384957b61c9ec6764777b98554e"

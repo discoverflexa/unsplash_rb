@@ -26,20 +26,22 @@ Or install it yourself as:
 ### Configuration
 
 Before making requests, you must configure the gem with your application ID
-and secret. If you are using Rails, you can do this in an initializer. 
+and secret. If you are using Rails, you can do this in an initializer.
 
 ```ruby
-Unsplash.configure do |config|    
-  config.application_id     = "YOUR APPLICATION ID"    
+Unsplash.configure do |config|
+  config.application_access_key = "YOUR ACCESS KEY"
   config.application_secret = "YOUR APPLICATION SECRET"
   config.application_redirect_uri = "https://your-application.com/oauth/callback"
   config.utm_source = "alices_terrific_client_app"
 end
 ```
 
-#### UTM parameters
+#### API Guidelines
 
-As part of [the API guidelines](https://community.unsplash.com/developersblog/unsplash-api-guidelines), all API uses are required to use utm links when providing credit to photographers and Unsplash. Set the `config.utm_source` to your app's name to automatically append the utm source.
+All API applications must abide by the [API Guidelines](https://medium.com/unsplash/unsplash-api-guidelines-28e0216e6daa).
+
+As part of [the API guidelines](https://medium.com/unsplash/unsplash-api-guidelines-28e0216e6daa), all API uses are required to use utm links when providing credit to photographers and Unsplash. Set the `config.utm_source` to your app's name to automatically append the utm source.
 
 ### Public-scope actions
 
@@ -81,15 +83,15 @@ permission scopes you requested and the user authorized.
 
 ### Hotlinking
 
-Hotlinking the Unsplash image files is encouraged: https://unsplash.com/documentation#hotlinking
+Hotlinking the [Unsplash image files is required](https://medium.com/@lukechesser/unsplash-api-guidelines-hotlinking-images-6c6b51030d2a)
 
-Unlike most APIs, Unsplash prefers for the image URLs returned by the API to be directly used or embedded in your applications (generally referred to as hotlinking). By using the CDN and embedding the photo URLs in your application, Unsplash can better track photo views and pass those stats on to the photographer, providing them with context for how popular their photo is and how it's being used.
+Unlike most APIs, Unsplash requires for the image URLs returned by the API to be directly used or embedded in your applications (generally referred to as hotlinking). By using the CDN and embedding the photo URLs in your application, Unsplash can better track photo views and pass those stats on to the photographer, providing them with context for how popular their photo is and how it's being used.
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. 
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
